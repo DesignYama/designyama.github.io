@@ -1,5 +1,9 @@
 # Design Yama
 
+2015年12月10日（木曜日） 19:00 開場
+
+GMO Yours 東京都渋谷区桜丘町26-1 セルリアンタワー11階
+
 http://designyama.github.io/
 
 ## デザインの話をしよう。
