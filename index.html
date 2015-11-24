@@ -259,31 +259,41 @@
     animate();
 
     function init() {
-      camera = new THREE.PerspectiveCamera( 75, SCREEN_WIDTH / SCREEN_HEIGHT, 1, 10000 );
-      camera.position.z = 400;
+      camera = new THREE.PerspectiveCamera( 60, SCREEN_WIDTH / SCREEN_HEIGHT, 1, 10000 );
+      camera.position.set(0,0,400);
       scene = new THREE.Scene();
       birds = [];
       boids = [];
 
+      var plane = new THREE.Mesh(  // 地面を作る
+      new THREE.PlaneGeometry(SCREEN_WIDTH, SCREEN_HEIGHT_HALF, 0, 0),
+      new THREE.MeshLambertMaterial( { color: 0xffffff }));
+      plane.position.set(0,-SCREEN_HEIGHT_HALF/2,-100);
+      scene.add( plane );
+
+      var light = new THREE.DirectionalLight(0xECE9C9);
+      light.position.set(1, 1, 10);
+      scene.add( light );
+
       var material = new THREE.MeshBasicMaterial( { color: 0x009577 } ); // 三角を作る
-      var shape = new THREE.Shape();
-      shape.moveTo(  0, 75 );
-      shape.lineTo(  100, -50 );
-      shape.lineTo( -100, -50 );
-      shape.lineTo(  0, 75 );
-      var geometry = new THREE.ShapeGeometry( shape );
+      var triangledark = new THREE.Shape();
+      triangledark.moveTo(  0, 75 );
+      triangledark.lineTo(  100, -50 );
+      triangledark.lineTo( -100, -50 );
+      triangledark.lineTo(  0, 75 );
+      var geometry = new THREE.ShapeGeometry( triangledark );
       scene.add( new THREE.Mesh( geometry, material ) );
 
       var material = new THREE.MeshBasicMaterial( { color: 0x00B482 } ); // 三角を作る
-      var shape = new THREE.Shape();
-      shape.moveTo(  0, 75 );
-      shape.lineTo(  25, -50 );
-      shape.lineTo( -100, -50 );
-      shape.lineTo(  0, 75 );
-      var geometry = new THREE.ShapeGeometry( shape );
+      var trianglelight = new THREE.Shape();
+      trianglelight.moveTo(  0, 75 );
+      trianglelight.lineTo(  25, -50 );
+      trianglelight.lineTo( -100, -50 );
+      trianglelight.lineTo(  0, 75 );
+      var geometry = new THREE.ShapeGeometry( trianglelight );
       scene.add( new THREE.Mesh( geometry, material ) );
 
-      for ( var i = 0; i < 68; i ++ ) { // 鳥の数
+      for ( var i = 0; i < 77; i ++ ) { // 鳥の数
         boid = boids[ i ] = new Boid();
         boid.position.x = Math.random() * 400 - 200;
         boid.position.y = Math.random() * 400 - 200;
