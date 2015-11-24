@@ -259,39 +259,40 @@
     animate();
 
     function init() {
-      camera = new THREE.PerspectiveCamera( 60, SCREEN_WIDTH / SCREEN_HEIGHT, 1, 10000 );
+      camera = new THREE.PerspectiveCamera( 50, SCREEN_WIDTH / SCREEN_HEIGHT, 1, 10000 ); // カメラの設定
       camera.position.set(0,0,400);
+      camera.lookAt(0,0,0);
       scene = new THREE.Scene();
       birds = [];
       boids = [];
 
-      var plane = new THREE.Mesh(  // 地面を作る
-      new THREE.PlaneGeometry(SCREEN_WIDTH, SCREEN_HEIGHT_HALF, 0, 0),
-      new THREE.MeshLambertMaterial( { color: 0xffffff }));
-      plane.position.set(0,-SCREEN_HEIGHT_HALF/2,-100);
-      scene.add( plane );
+      // var material = new THREE.MeshBasicMaterial( { color: 0x009577 } ); // 三角を作る
+      // var triangledark = new THREE.Shape();
+      // triangledark.moveTo(  0, 75 );
+      // triangledark.lineTo(  100, -50 );
+      // triangledark.lineTo( -100, -50 );
+      // triangledark.lineTo(  0, 75 );
+      // var geometry = new THREE.ShapeGeometry( triangledark );
+      // scene.add( new THREE.Mesh( geometry, material ) );
 
-      var light = new THREE.DirectionalLight(0xECE9C9);
-      light.position.set(1, 1, 10);
-      scene.add( light );
+      // var material = new THREE.MeshBasicMaterial( { color: 0x00B482 } ); // 三角を作る
+      // var trianglelight = new THREE.Shape();
+      // trianglelight.moveTo(  0, 75 );
+      // trianglelight.lineTo(  25, -50 );
+      // trianglelight.lineTo( -100, -50 );
+      // trianglelight.lineTo(  0, 75 );
+      // var geometry = new THREE.ShapeGeometry( trianglelight );
+      // scene.add( new THREE.Mesh( geometry, material ) );
 
-      var material = new THREE.MeshBasicMaterial( { color: 0x009577 } ); // 三角を作る
-      var triangledark = new THREE.Shape();
-      triangledark.moveTo(  0, 75 );
-      triangledark.lineTo(  100, -50 );
-      triangledark.lineTo( -100, -50 );
-      triangledark.lineTo(  0, 75 );
-      var geometry = new THREE.ShapeGeometry( triangledark );
-      scene.add( new THREE.Mesh( geometry, material ) );
+      var mountain = new THREE.Mesh( // 山の設定
+        new THREE.TetrahedronGeometry( 120,0 ), // 半径40の正4面体の分割0回
+        new THREE.MeshLambertMaterial( { color: 0x00B482 } )
+      );
+      scene.add( mountain );
 
-      var material = new THREE.MeshBasicMaterial( { color: 0x00B482 } ); // 三角を作る
-      var trianglelight = new THREE.Shape();
-      trianglelight.moveTo(  0, 75 );
-      trianglelight.lineTo(  25, -50 );
-      trianglelight.lineTo( -100, -50 );
-      trianglelight.lineTo(  0, 75 );
-      var geometry = new THREE.ShapeGeometry( trianglelight );
-      scene.add( new THREE.Mesh( geometry, material ) );
+      var light = new THREE.DirectionalLight(0xffffff, 1.5); // 光源の色, 強さ
+      light.position = {x: 0, y: 0.2, z: -1} // 光源の位置
+      scene.add(light);
 
       for ( var i = 0; i < 77; i ++ ) { // 鳥の数
         boid = boids[ i ] = new Boid();
@@ -314,7 +315,6 @@
       renderer.setPixelRatio( window.devicePixelRatio );
       renderer.setSize( SCREEN_WIDTH, SCREEN_HEIGHT*0.8 ); // canvas の幅・高さ
       document.addEventListener( 'mousemove', onDocumentMouseMove, false );
-      document.body.appendChild( renderer.domElement );
       window.addEventListener( 'resize', onWindowResize, false );
     }
 
@@ -356,14 +356,24 @@
         bird.phase = ( bird.phase + ( Math.max( 0, bird.rotation.z ) + 0.1 )  ) % 62.83;
         bird.geometry.vertices[ 5 ].y = bird.geometry.vertices[ 4 ].y = Math.sin( bird.phase ) * 5;
       }
+      document.getElementById('splash--wrapper').appendChild( renderer.domElement );
       renderer.render( scene, camera );
     }
-
   </script>
 
-  <h1>デザインの話をしよう。</h1>
-  <p>はじめまして、デザイン山です。デザインするということは、さまざまな選択肢の中からひとつを選ぶということだと思います。選ぶための方法論やフレームワーク、道具の使い方を語ることはあっても、どうして選んだのかという理由は、これまであまり話されてこなかったのではないでしょうか。デザイナーがそれぞれ大切にしていること、それをカッコいいと思うこころが知りたいです。そんな話が聞けたらいいなと思って、みんなでおしゃべりをするイベントを開催します。</p>
-  <p>第1回（第2回があるかわかりませんが）は、それぞれが好きなものをまくらにして、デザインの話をします。会場には2つの「山」があって、モデレータがいます。好きな場所で、好きなように話してもいいよ。デザイン山は、みんなでつくるイベントです。</p>
+  <div id="splash--wrapper">
+    <div class="splash--header">
+      <h1>デザインの話をしよう。</h1>
+      <p>はじめまして、デザイン山です。デザインするということは、さまざまな選択肢の中からひとつを選ぶということだと思います。選ぶための方法論やフレームワーク、道具の使い方を語ることはあっても、どうして選んだのかという理由は、これまであまり話されてこなかったのではないでしょうか。デザイナーがそれぞれ大切にしていること、それをカッコいいと思うこころが知りたいです。そんな話が聞けたらいいなと思って、みんなでおしゃべりをするイベントを開催します。</p>
+    </div>
+  </div>
+
+  <div class="content--wrapper">
+    <h1>デザインの話をしよう。</h1>
+    <p>はじめまして、デザイン山です。デザインするということは、さまざまな選択肢の中からひとつを選ぶということだと思います。選ぶための方法論やフレームワーク、道具の使い方を語ることはあっても、どうして選んだのかという理由は、これまであまり話されてこなかったのではないでしょうか。デザイナーがそれぞれ大切にしていること、それをカッコいいと思うこころが知りたいです。そんな話が聞けたらいいなと思って、みんなでおしゃべりをするイベントを開催します。</p>
+    <p>第1回（第2回があるかわかりませんが）は、それぞれが好きなものをまくらにして、デザインの話をします。会場には2つの「山」があって、モデレータがいます。好きな場所で、好きなように話してもいいよ。デザイン山は、みんなでつくるイベントです。</p>
+  </div>
+
   <!-- Facebook SDK -->
   <div id="fb-root"></div>
   <script>(function(d, s, id) {
