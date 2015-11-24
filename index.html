@@ -265,8 +265,25 @@
       birds = [];
       boids = [];
 
-      for ( var i = 0; i < 68; i ++ ) { // 鳥の数
+      var material = new THREE.MeshBasicMaterial( { color: 0x009577 } ); // 三角を作る
+      var shape = new THREE.Shape();
+      shape.moveTo(  0, 75 );
+      shape.lineTo(  100, -50 );
+      shape.lineTo( -100, -50 );
+      shape.lineTo(  0, 75 );
+      var geometry = new THREE.ShapeGeometry( shape );
+      scene.add( new THREE.Mesh( geometry, material ) );
 
+      var material = new THREE.MeshBasicMaterial( { color: 0x00B482 } ); // 三角を作る
+      var shape = new THREE.Shape();
+      shape.moveTo(  0, 75 );
+      shape.lineTo(  25, -50 );
+      shape.lineTo( -100, -50 );
+      shape.lineTo(  0, 75 );
+      var geometry = new THREE.ShapeGeometry( shape );
+      scene.add( new THREE.Mesh( geometry, material ) );
+
+      for ( var i = 0; i < 68; i ++ ) { // 鳥の数
         boid = boids[ i ] = new Boid();
         boid.position.x = Math.random() * 400 - 200;
         boid.position.y = Math.random() * 400 - 200;
@@ -282,26 +299,22 @@
         scene.add( bird );
       }
 
-      renderer = new THREE.CanvasRenderer();
-      renderer.setClearColor( 0x00C8FF );
+      renderer = new THREE.CanvasRenderer(); // canvas の設定
+      renderer.setClearColor( 0x00C8FF ); // 背景色
       renderer.setPixelRatio( window.devicePixelRatio );
-      renderer.setSize( SCREEN_WIDTH, SCREEN_HEIGHT*0.8 );
+      renderer.setSize( SCREEN_WIDTH, SCREEN_HEIGHT*0.8 ); // canvas の幅・高さ
       document.addEventListener( 'mousemove', onDocumentMouseMove, false );
       document.body.appendChild( renderer.domElement );
       window.addEventListener( 'resize', onWindowResize, false );
     }
 
     function onWindowResize() {
-
       camera.aspect = window.innerWidth / window.innerHeight;
       camera.updateProjectionMatrix();
-
       renderer.setSize( window.innerWidth, window.innerHeight );
-
     }
 
     function onDocumentMouseMove( event ) {
-
       var vector = new THREE.Vector3( event.clientX - SCREEN_WIDTH_HALF, - event.clientY + SCREEN_HEIGHT_HALF, 0 );
 
       for ( var i = 0, il = boids.length; i < il; i++ ) {
@@ -310,7 +323,6 @@
         boid.repulse( vector );
       }
     }
-    //
 
     function animate() {
       requestAnimationFrame( animate );
@@ -336,6 +348,7 @@
       }
       renderer.render( scene, camera );
     }
+
   </script>
 
   <h1>デザインの話をしよう。</h1>
