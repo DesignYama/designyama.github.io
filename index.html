@@ -3,9 +3,8 @@
 <html prefix="og: http://ogp.me/ns#">
 <head>
   <meta charset="utf-8">
-  <title>デザイン山 〜 デザインの話をしよう。</title>
+  <title>デザイン山 - Design Yama -</title>
   <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
-
   <meta property="og:title" content="Toppage - Example Site" />
   <meta property="og:description" content="Awesome site" />
   <meta property="og:type" content="website" />
@@ -127,7 +126,6 @@
       };
 
       this.move = function () {
-
         this.velocity.add( _acceleration );
         var l = this.velocity.length();
         if ( l > _maxSpeed ) {
@@ -136,32 +134,24 @@
 
         this.position.add( this.velocity );
         _acceleration.set( 0, 0, 0 );
-
       };
 
       this.checkBounds = function () {
-
         if ( this.position.x >   _width ) this.position.x = - _width;
         if ( this.position.x < - _width ) this.position.x =   _width;
         if ( this.position.y >   _height ) this.position.y = - _height;
         if ( this.position.y < - _height ) this.position.y =  _height;
         if ( this.position.z >  _depth ) this.position.z = - _depth;
         if ( this.position.z < - _depth ) this.position.z =  _depth;
-
       };
 
 
       this.avoid = function ( target ) {
-
         var steer = new THREE.Vector3();
-
         steer.copy( this.position );
         steer.sub( target );
-
         steer.multiplyScalar( 1 / this.position.distanceToSquared( target ) );
-
         return steer;
-
       };
 
       this.repulse = function ( target ) {
@@ -169,16 +159,11 @@
         var distance = this.position.distanceTo( target );
 
         if ( distance < 150 ) {
-
           var steer = new THREE.Vector3();
-
           steer.subVectors( this.position, target );
           steer.multiplyScalar( 0.5 / distance );
-
           _acceleration.add( steer );
-
         }
-
       };
 
       this.reach = function ( target, amount ) {
@@ -218,7 +203,6 @@
         posSum = new THREE.Vector3(),
         steer = new THREE.Vector3(),
         count = 0;
-
         for ( var i = 0, il = boids.length; i < il; i ++ ) {
           if ( Math.random() > 0.6 ) continue;
           boid = boids[ i ];
@@ -228,11 +212,9 @@
             count++;
           }
         }
-
         if ( count > 0 ) {
           posSum.divideScalar( count );
         }
-
         steer.subVectors( posSum, this.position );
         var l = steer.length();
         if ( l > _maxSteerForce ) {
@@ -247,9 +229,7 @@
         repulse = new THREE.Vector3();
 
         for ( var i = 0, il = boids.length; i < il; i ++ ) {
-
           if ( Math.random() > 0.6 ) continue;
-
           boid = boids[ i ];
           distance = boid.position.distanceTo( this.position );
 
@@ -275,21 +255,17 @@
     birds, bird;
 
     var boid, boids;
-
     init();
     animate();
 
     function init() {
-
       camera = new THREE.PerspectiveCamera( 75, SCREEN_WIDTH / SCREEN_HEIGHT, 1, 10000 );
-      camera.position.z = 450;
-
+      camera.position.z = 400;
       scene = new THREE.Scene();
-
       birds = [];
       boids = [];
 
-      for ( var i = 0; i < 200; i ++ ) {
+      for ( var i = 0; i < 68; i ++ ) { // 鳥の数
 
         boid = boids[ i ] = new Boid();
         boid.position.x = Math.random() * 400 - 200;
@@ -304,14 +280,12 @@
         bird = birds[ i ] = new THREE.Mesh( new Bird(), new THREE.MeshBasicMaterial( { color:Math.random() * 0xffffff, side: THREE.DoubleSide } ) );
         bird.phase = Math.floor( Math.random() * 62.83 );
         scene.add( bird );
-
-
       }
 
       renderer = new THREE.CanvasRenderer();
       renderer.setClearColor( 0x00C8FF );
       renderer.setPixelRatio( window.devicePixelRatio );
-      renderer.setSize( SCREEN_WIDTH, SCREEN_HEIGHT );
+      renderer.setSize( SCREEN_WIDTH, SCREEN_HEIGHT*0.8 );
       document.addEventListener( 'mousemove', onDocumentMouseMove, false );
       document.body.appendChild( renderer.domElement );
       window.addEventListener( 'resize', onWindowResize, false );

@@ -1,5 +1,4 @@
 var Bird = function () {
-
 	var scope = this;
 
 	THREE.Geometry.call( this );
