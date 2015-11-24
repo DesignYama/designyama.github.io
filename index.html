@@ -260,39 +260,24 @@
 
     function init() {
       camera = new THREE.PerspectiveCamera( 50, SCREEN_WIDTH / SCREEN_HEIGHT, 1, 10000 ); // カメラの設定
-      camera.position.set(0,0,400);
+      camera.position.set(0,45,400);
       camera.lookAt(0,0,0);
       scene = new THREE.Scene();
       birds = [];
       boids = [];
 
-      // var material = new THREE.MeshBasicMaterial( { color: 0x009577 } ); // 三角を作る
-      // var triangledark = new THREE.Shape();
-      // triangledark.moveTo(  0, 75 );
-      // triangledark.lineTo(  100, -50 );
-      // triangledark.lineTo( -100, -50 );
-      // triangledark.lineTo(  0, 75 );
-      // var geometry = new THREE.ShapeGeometry( triangledark );
-      // scene.add( new THREE.Mesh( geometry, material ) );
-
-      // var material = new THREE.MeshBasicMaterial( { color: 0x00B482 } ); // 三角を作る
-      // var trianglelight = new THREE.Shape();
-      // trianglelight.moveTo(  0, 75 );
-      // trianglelight.lineTo(  25, -50 );
-      // trianglelight.lineTo( -100, -50 );
-      // trianglelight.lineTo(  0, 75 );
-      // var geometry = new THREE.ShapeGeometry( trianglelight );
-      // scene.add( new THREE.Mesh( geometry, material ) );
-
       var mountain = new THREE.Mesh( // 山の設定
-        new THREE.TetrahedronGeometry( 120,0 ), // 半径40の正4面体の分割0回
+        new THREE.TetrahedronGeometry( 111,0 ), // 半径111の正4面体の分割0回
         new THREE.MeshLambertMaterial( { color: 0x00B482 } )
       );
+      mountain.rotation.x = -0.78;
+      mountain.rotation.y = 0;
+      mountain.rotation.z = 0.78;
       scene.add( mountain );
 
-      var light = new THREE.DirectionalLight(0xffffff, 1.5); // 光源の色, 強さ
-      light.position = {x: 0, y: 0.2, z: -1} // 光源の位置
-      scene.add(light);
+      var light = new THREE.DirectionalLight(0xffffff, 1.3); // 光源の色, 強さ
+      light.position.set(-45,45,200);
+      scene.add( light );
 
       for ( var i = 0; i < 77; i ++ ) { // 鳥の数
         boid = boids[ i ] = new Boid();
@@ -356,6 +341,7 @@
         bird.phase = ( bird.phase + ( Math.max( 0, bird.rotation.z ) + 0.1 )  ) % 62.83;
         bird.geometry.vertices[ 5 ].y = bird.geometry.vertices[ 4 ].y = Math.sin( bird.phase ) * 5;
       }
+
       document.getElementById('splash--wrapper').appendChild( renderer.domElement );
       renderer.render( scene, camera );
     }
