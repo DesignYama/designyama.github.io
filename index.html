@@ -251,33 +251,36 @@
     SCREEN_WIDTH_HALF = SCREEN_WIDTH  / 2,
     SCREEN_HEIGHT_HALF = SCREEN_HEIGHT / 2;
 
-    var camera, scene, renderer,
-    birds, bird;
-
+    var camera, light, scene, renderer, mountain;
+    var birds, bird;
     var boid, boids;
+    var angle = 360;
+    var deg;
+    var rotate = 0;
     init();
     animate();
 
     function init() {
-      camera = new THREE.PerspectiveCamera( 50, SCREEN_WIDTH / SCREEN_HEIGHT, 1, 10000 ); // カメラの設定
-      camera.position.set(0,45,400);
-      camera.lookAt(0,0,0);
       scene = new THREE.Scene();
       birds = [];
       boids = [];
 
-      var mountain = new THREE.Mesh( // 山の設定
-        new THREE.TetrahedronGeometry( 111,0 ), // 半径111の正4面体の分割0回
+      camera = new THREE.PerspectiveCamera( 50, SCREEN_WIDTH / SCREEN_HEIGHT, 1, 10000 ); // カメラの設定
+      camera.position.set(0,60,400);
+
+      light = new THREE.DirectionalLight(0xffffff, 1.2); // 光源の設定
+      light.position.set(-45,45,200);
+      scene.add( light );
+
+      mountain = new THREE.Mesh( // 山の設定
+        new THREE.TetrahedronGeometry( 111,0 ), // 半径111の正四面体の分割 0回
         new THREE.MeshLambertMaterial( { color: 0x00B482 } )
       );
       mountain.rotation.x = -0.78;
       mountain.rotation.y = 0;
       mountain.rotation.z = 0.78;
+      camera.lookAt( mountain.position );
       scene.add( mountain );
-
-      var light = new THREE.DirectionalLight(0xffffff, 1.3); // 光源の色, 強さ
-      light.position.set(-45,45,200);
-      scene.add( light );
 
       for ( var i = 0; i < 77; i ++ ) { // 鳥の数
         boid = boids[ i ] = new Boid();
@@ -311,7 +314,6 @@
 
     function onDocumentMouseMove( event ) {
       var vector = new THREE.Vector3( event.clientX - SCREEN_WIDTH_HALF, - event.clientY + SCREEN_HEIGHT_HALF, 0 );
-
       for ( var i = 0, il = boids.length; i < il; i++ ) {
         boid = boids[ i ];
         vector.z = boid.position.z;
@@ -321,7 +323,9 @@
 
     function animate() {
       requestAnimationFrame( animate );
-      render();
+      rotate = (rotate > 359)?0:rotate + 1;
+      mountain.rotation.y += -0.001;
+      render( );
     }
 
     function render() {
@@ -341,8 +345,7 @@
         bird.phase = ( bird.phase + ( Math.max( 0, bird.rotation.z ) + 0.1 )  ) % 62.83;
         bird.geometry.vertices[ 5 ].y = bird.geometry.vertices[ 4 ].y = Math.sin( bird.phase ) * 5;
       }
-
-      document.getElementById('splash--wrapper').appendChild( renderer.domElement );
+      document.getElementById('splash--wrapper').appendChild( renderer.domElement ); // canvas をレンダリスングする場所
       renderer.render( scene, camera );
     }
   </script>
