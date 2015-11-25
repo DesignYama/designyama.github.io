@@ -263,7 +263,7 @@
       boids = [];
 
       camera = new THREE.PerspectiveCamera( 50, SCREEN_WIDTH / SCREEN_HEIGHT, 1, 10000 ); // カメラの設定
-      camera.position.set(0,40,400);
+      camera.position.set(0,0,400);
       camera.lookAt( 0,0,0 );
 
       light = new THREE.DirectionalLight(0xffffff, 1.3); // 光源の設定
@@ -280,7 +280,7 @@
       scene.add( mountain );
 
 
-      for ( var i = 0; i < 77; i ++ ) { // 鳥の数
+      for ( var i = 0; i < 88; i ++ ) { // 鳥の数
         boid = boids[ i ] = new Boid();
         boid.position.x = Math.random() * 400 - 200;
         boid.position.y = Math.random() * 400 - 200;
@@ -361,6 +361,40 @@
     <p>はじめまして、デザイン山です。デザインするということは、さまざまな選択肢の中からひとつを選ぶということだと思います。選ぶための方法論やフレームワーク、道具の使い方を語ることはあっても、どうして選んだのかという理由は、これまであまり話されてこなかったのではないでしょうか。デザイナーがそれぞれ大切にしていること、それをカッコいいと思うこころが知りたいです。そんな話が聞けたらいいなと思って、みんなでおしゃべりをするイベントを開催します。</p>
     <p>第1回（第2回があるかわかりませんが）は、それぞれが好きなものをまくらにして、デザインの話をします。会場には2つの「山」があって、モデレータがいます。好きな場所で、好きなように話してもいいよ。デザイン山は、みんなでつくるイベントです。</p>
   </div>
+  <section>
+    <h1>インフォメーション</h1>
+    <p>デザイン山 第1山</p>
+    <p>2015年12月10日（木曜日）19:00 - 22:00</p>
+    <p>GMO Yours（渋谷セルリアンタワー 11F）</p>
+    <p>参加費 無料</p>
+    <p>ハッシュタグ #designyama</p>
+    <p>
+      <a href="">山に登る（イベントに参加するという意味です）</a>
+    </p>
+  </section>
+  <section>
+    <h1>時間割</h1>
+    <dl>
+      <dt>19:00 - 19:30</dt>
+      <dd>ご挨拶</dd>
+    </dl>
+    <dl>
+      <dt>19:00 - 19:30</dt>
+      <dd>ご挨拶</dd>
+    </dl>
+    <dl>
+      <dt>19:00 - 19:30</dt>
+      <dd>ご挨拶</dd>
+    </dl>
+  </section>
+  <section>
+    <h1>アクセス</h1>
+    <p>東京都渋谷区桜丘町26-1　セルリアンタワー 11F</p>
+    <p>19:00 までにオフィスロビーにお越しください。</p>
+  </section>
+  <footer>
+    <span>Copyright 2015 &copy; DESIGN YAMA All rights reserved.</span>
+  </footer>
 
   <!-- Facebook SDK -->
   <div id="fb-root"></div>
