@@ -22,17 +22,11 @@ var Bird = function () {
 	this.computeFaceNormals();
 
 	function v( x, y, z ) {
-
 		scope.vertices.push( new THREE.Vector3( x, y, z ) );
-
 	}
-
 	function f3( a, b, c ) {
-
 		scope.faces.push( new THREE.Face3( a, b, c ) );
-
 	}
-
 }
 
 Bird.prototype = Object.create( THREE.Geometry.prototype );
