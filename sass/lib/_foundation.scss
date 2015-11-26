@@ -12,3 +12,26 @@ a {
     opacity: 0.5;
   }
 }
+
+/*
+ブラウザの幅によって表示を切り替えるときに使う mixin です。
+
+```example
+@include if-phone {
+  // スマホから見たときだけ適用されるCSS
+}
+@include if-desktop {
+  // PC から見たときだけ適用されるCSS
+}
+```
+*/
+@mixin if-phone {
+  @media screen and (max-width: 640px) {
+    @content;
+  }
+}
+@mixin if-desktop {
+  @media screen and (min-width: 641px) {
+    @content;
+  }
+}
