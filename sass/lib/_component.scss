@@ -1,4 +1,23 @@
 /*
+ボタンの component です。
+
+```example
+<a class="button" href="http://connpass.com/event/23439/" target="_blank">入山する</a>
+```
+*/
+.button {
+  height: 48px;
+  line-height: 48px;
+  text-align: center;
+  display: block;
+  color: #fff;
+  font-size: 18px;
+  border: 1px solid #fff;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+/*
 ブラウザの幅によって表示を切り替えるときに使う utility です。
 
 * if-phone-show
