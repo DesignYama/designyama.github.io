@@ -249,6 +249,7 @@ function init() {
   renderer.setSize( SCREEN_WIDTH, SCREEN_HEIGHT*0.8 ); // canvas の幅・高さ
   document.addEventListener( 'mousemove', onDocumentMouseMove, false );
   window.addEventListener( 'resize', onWindowResize, false );
+  onWindowResize();
 }
 
 function onWindowResize() {
