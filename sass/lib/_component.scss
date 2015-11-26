@@ -1,0 +1,33 @@
+/*
+ブラウザの幅によって表示を切り替えるときに使う utility です。
+
+* if-phone-show
+  * スマホのときは表示する
+* if-phone-hide
+  * スマホのときは隠す
+* if-desktop-show
+  * PC のときは表示する
+* if-desktop-hide
+  * PC のときは隠す
+
+*/
+.if-phone-show,
+.if-desktop-show {
+  display: none;
+}
+@include if-phone {
+  .if-phone-hide {
+    display: none;
+  }
+  .if-phone-show {
+    display: block;
+  }
+}
+@include if-desktop {
+  .if-desktop-hide {
+    display: none;
+  }
+  .if-desktop-show {
+    display: block;
+  }
+}
