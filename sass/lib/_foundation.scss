@@ -1,0 +1,14 @@
+body {
+  color: #fff;
+  font-family: '秀英角ゴシック銀 L', 'Shuei KakuGo Gin L', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+a {
+  color: #fff;
+  opacity: 1;
+  transition: opacity .2s;
+  &:hover {
+    color: #fff;
+    opacity: 0.5;
+  }
+}
