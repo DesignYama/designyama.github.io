@@ -1,8 +1,8 @@
 // Based on http://www.openprocessing.org/visuals/?visualID=6910
 var Boid = function() {
   var vector = new THREE.Vector3(),
-  _acceleration, _width = 500, _height = 500, _depth = 200, _goal, _neighborhoodRadius = 100,
-  _maxSpeed = 4, _maxSteerForce = 0.1, _avoidWalls = false;
+  _acceleration, _width = 400, _height = 500, _depth = 400, _goal, _neighborhoodRadius = 100,
+  _maxSpeed = 4, _maxSteerForce = 0.36, _avoidWalls = false;
   this.position = new THREE.Vector3();
   this.velocity = new THREE.Vector3();
   _acceleration = new THREE.Vector3();
@@ -64,11 +64,9 @@ var Boid = function() {
     if ( _goal ) {
       _acceleration.add( this.reach( _goal, 0.005 ) );
     }
-
     _acceleration.add( this.alignment( boids ) );
     _acceleration.add( this.cohesion( boids ) );
     _acceleration.add( this.separation( boids ) );
-
   };
 
   this.move = function () {
@@ -77,7 +75,6 @@ var Boid = function() {
     if ( l > _maxSpeed ) {
       this.velocity.divideScalar( l / _maxSpeed );
     }
-
     this.position.add( this.velocity );
     _acceleration.set( 0, 0, 0 );
   };
@@ -120,10 +117,8 @@ var Boid = function() {
   };
 
   this.alignment = function ( boids ) {
-
     var boid, velSum = new THREE.Vector3(),
     count = 0;
-
     for ( var i = 0, il = boids.length; i < il; i++ ) {
       if ( Math.random() > 0.6 ) continue;
       boid = boids[ i ];
@@ -133,7 +128,6 @@ var Boid = function() {
         count++;
       }
     }
-
     if ( count > 0 ) {
       velSum.divideScalar( count );
       var l = velSum.length();
@@ -204,17 +198,18 @@ var rotate = 0;
 init();
 animate();
 
+
 function init() {
   scene = new THREE.Scene();
   birds = [];
   boids = [];
 
   camera = new THREE.PerspectiveCamera( 50, SCREEN_WIDTH / SCREEN_HEIGHT, 1, 10000 ); // カメラの設定
-  camera.position.set(0,0,400);
+  camera.position.set(0,-10,400);
   camera.lookAt( 0,0,0 );
 
-  light = new THREE.DirectionalLight(0xffffff, 1.3); // 光源の設定
-  light.position.set(-45,45,200);
+  light = new THREE.DirectionalLight(0xffffff, 1.4); // 光源の設定
+  light.position.set(-25,-40,600);
   scene.add( light );
 
   mountain = new THREE.Mesh( // 山の設定
@@ -227,7 +222,7 @@ function init() {
   scene.add( mountain );
 
 
-  for ( var i = 0; i < 88; i ++ ) { // 鳥の数
+  for ( var i = 0; i < 77; i ++ ) { // 鳥の数
     boid = boids[ i ] = new Boid();
     boid.position.x = Math.random() * 400 - 200;
     boid.position.y = Math.random() * 400 - 200;
@@ -237,8 +232,7 @@ function init() {
     boid.velocity.z = Math.random() * 2 - 1;
     boid.setAvoidWalls( true );
     boid.setWorldSize( 500, 500, 400 );
-
-    bird = birds[ i ] = new THREE.Mesh( new Bird(), new THREE.MeshBasicMaterial( { color: 0xffffff, side: THREE.DoubleSide } ) );
+    bird = birds[ i ] = new THREE.Mesh( new Bird(), new THREE.MeshBasicMaterial( { color: 0xffffff, opacity: 0.68, side: THREE.DoubleSide } ) );
     bird.phase = Math.floor( Math.random() * 62.83 );
     scene.add( bird );
   }
@@ -246,7 +240,7 @@ function init() {
   renderer = new THREE.CanvasRenderer(); // canvas の設定
   renderer.setClearColor( 0x00C8FF ); // 背景色
   renderer.setPixelRatio( window.devicePixelRatio );
-  renderer.setSize( SCREEN_WIDTH, SCREEN_HEIGHT*0.8 ); // canvas の幅・高さ
+  renderer.setSize( SCREEN_WIDTH, SCREEN_HEIGHT ); // canvas の幅・高さ
   document.addEventListener( 'mousemove', onDocumentMouseMove, false );
   window.addEventListener( 'resize', onWindowResize, false );
   onWindowResize();
@@ -270,7 +264,8 @@ function onDocumentMouseMove( event ) {
 function animate() {
   requestAnimationFrame( animate );
   rotate = (rotate > 359)?0:rotate + 1;
-  mountain.rotation.y += -0.001;
+  mountain.rotation.x += -0.0008;
+  mountain.rotation.y += -0.0012;
   render( );
 }
 
@@ -281,9 +276,6 @@ function render() {
 
     bird = birds[ i ];
     bird.position.copy( boids[ i ].position );
-
-    color = bird.material.color;
-    color.r = color.g = color.b = ( 500 - bird.position.z ) / 1000;
 
     bird.rotation.y = Math.atan2( - boid.velocity.z, boid.velocity.x );
     bird.rotation.z = Math.asin( boid.velocity.y / boid.velocity.length() );
