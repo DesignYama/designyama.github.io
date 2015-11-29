@@ -45,9 +45,15 @@ body {
   left: 0;
   width: 100%;
   text-align: center;
+  img {
+    width: 106px;
+  }
 }
 .section {
   margin: 40px 0;
+}
+.section__heading {
+  text-align: center;
 }
 .section__body {
   p {

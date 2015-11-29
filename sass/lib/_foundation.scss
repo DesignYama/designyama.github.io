@@ -3,7 +3,7 @@ body {
   font-family: Helvetica, '秀英角ゴシック銀 L', 'Shuei KakuGo Gin L', sans-serif;
   -webkit-font-smoothing: antialiased;
   letter-spacing: 0.025em;
-  line-height: 1.76em;
+  line-height: 2.2em;
 }
 a {
   color: #fff;
@@ -19,6 +19,9 @@ li {
   list-style: none;
   list-style-image: none;
   padding: 0;
+}
+h1,h2 {
+  font-weight: normal;
 }
 
 /*

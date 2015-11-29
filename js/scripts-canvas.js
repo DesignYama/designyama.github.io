@@ -209,7 +209,7 @@ function init() {
   camera.lookAt( 0,0,0 );
 
   light = new THREE.DirectionalLight(0xffffff, 1.4); // 光源の設定
-  light.position.set(-25,-40,600);
+  light.position.set(-25,-40,400);
   scene.add( light );
 
   mountain = new THREE.Mesh( // 山の設定
