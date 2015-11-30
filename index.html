@@ -8,12 +8,12 @@
     <meta property="og:description" content="はじめまして、デザイン山です。デザインするということは、さまざまな選択肢の中からひとつを選ぶということだと思います。選ぶための方法論やフレームワーク、道具の使い方を語ることはあっても、どうして選んだのかという理由は、これまであまり話されてこなかったのではないでしょうか。デザイナーがそれぞれ大切にしていること、それをカッコいいと思うこころが知りたいです。そんな話が聞けたらいいなと思って、みんなでおしゃべりをするイベントを開催します。" />
     <meta property="og:type" content="website" />
     <meta property="og:url" content="http://designyama.com/" />
-    <meta property="og:image" content="build/images/og-image.jpg" />
+    <meta property="og:image" content="http://designyama.com/build/images/og-image.jpg" />
     <meta property="og:site_name" content="デザイン山" />
 
-    <meta property="fb:app_id" content="" />
+    <meta property="fb:app_id" content="870003569780651" />
     <meta name="twitter:card" content="summary">
-    <meta name="twitter:site" content="">
+    <meta name="twitter:site" content="http://designyama.com/">
 
     <link rel="stylesheet" href="build/css/style.css" />
     <link rel="shortcut icon" href="build/images/favicon.ico" />
@@ -261,14 +261,21 @@
     <script type="text/javascript" src="//typesquare.com/accessor/script/typesquare.js?Y7Lga5KpPn8%3D" charset="utf-8"></script>
 
     <!-- Facebook SDK -->
-    <div id="fb-root"></div>
-    <script>(function(d, s, id) {
-      var js, fjs = d.getElementsByTagName(s)[0];
-      if (d.getElementById(id)) return;
-      js = d.createElement(s); js.id = id;
-      js.src = "//connect.facebook.net/ja_JP/sdk.js#xfbml=1&version=v2.0";
-      fjs.parentNode.insertBefore(js, fjs);
-    }(document, 'script', 'facebook-jssdk'));</script>
-
+    <script>
+      window.fbAsyncInit = function() {
+        FB.init({
+          appId      : '870003569780651',
+          xfbml      : true,
+          version    : 'v2.5'
+        });
+      };
+      (function(d, s, id){
+         var js, fjs = d.getElementsByTagName(s)[0];
+         if (d.getElementById(id)) {return;}
+         js = d.createElement(s); js.id = id;
+         js.src = "//connect.facebook.net/en_US/sdk.js";
+         fjs.parentNode.insertBefore(js, fjs);
+       }(document, 'script', 'facebook-jssdk'));
+    </script>
   </body>
 </html>
