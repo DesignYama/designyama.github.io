@@ -205,7 +205,7 @@ function init() {
   boids = [];
 
   camera = new THREE.PerspectiveCamera( 50, SCREEN_WIDTH / SCREEN_HEIGHT, 1, 10000 ); // カメラの設定
-  camera.position.set(0,-10,400);
+  camera.position.set(0,-20,480);
   camera.lookAt( 0,0,0 );
 
   light = new THREE.DirectionalLight(0xffffff, 1.4); // 光源の設定
