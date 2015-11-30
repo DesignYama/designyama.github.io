@@ -50,7 +50,7 @@ body {
   }
 }
 .section {
-  margin: 40px 0;
+  margin: 80px 0;
 }
 .section__heading {
   text-align: center;
@@ -58,6 +58,27 @@ body {
 .section__body {
   p {
     text-align: justify;
+  }
+  ul {
+    padding-left: 21px;
+    border-left: 1px solid #fff;
+  }
+  dl {
+    margin: 20px 0;
+    dt,
+    dd {
+      display: inline-block;
+      vertical-align: middle;
+    }
+    dt {
+      width: 108px;
+      font-weight: bold;
+    }
+    dd {
+      margin: 0 0;
+      padding-left: 21px;
+      border-left: 1px solid #fff;
+    }
   }
 }
 .footer--nav {
