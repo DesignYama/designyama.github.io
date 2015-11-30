@@ -1,0 +1,48 @@
+body {
+  color: #fff;
+  font-family: Helvetica, '秀英角ゴシック銀 L', 'Shuei KakuGo Gin L', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  letter-spacing: 0.025em;
+  line-height: 2.2em;
+}
+a {
+  color: #fff;
+  opacity: 1;
+  transition: opacity .2s;
+  &:hover {
+    color: #fff;
+    opacity: 0.65;
+  }
+}
+ul,
+li {
+  list-style: none;
+  list-style-image: none;
+  padding: 0;
+}
+h1,h2 {
+  font-weight: normal;
+}
+
+/*
+ブラウザの幅によって表示を切り替えるときに使う mixin です。
+
+```example
+@include if-phone {
+  // スマホから見たときだけ適用されるCSS
+}
+@include if-desktop {
+  // PC から見たときだけ適用されるCSS
+}
+```
+*/
+@mixin if-phone {
+  @media screen and (max-width: 640px) {
+    @content;
+  }
+}
+@mixin if-desktop {
+  @media screen and (min-width: 641px) {
+    @content;
+  }
+}

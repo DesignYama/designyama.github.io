@@ -1,12 +1,268 @@
 <!DOCTYPE html>
-<html>
+<html prefix="og: http://ogp.me/ns#">
   <head>
     <meta charset="utf-8">
-    <title>デザイン山</title>
-  </head>
-  <body>
+    <title>デザイン山 - Design Yama -</title>
+    <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+    <meta property="og:title" content="デザイン山 - Design Yama -" />
+    <meta property="og:description" content="はじめまして、デザイン山です。デザインするということは、さまざまな選択肢の中からひとつを選ぶということだと思います。選ぶための方法論やフレームワーク、道具の使い方を語ることはあっても、どうして選んだのかという理由は、これまであまり話されてこなかったのではないでしょうか。デザイナーがそれぞれ大切にしていること、それをカッコいいと思うこころが知りたいです。そんな話が聞けたらいいなと思って、みんなでおしゃべりをするイベントを開催します。" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="http://designyama.com/" />
+    <meta property="og:image" content="build/images/og-image.jpg" />
+    <meta property="og:site_name" content="デザイン山" />
 
-    <h1>デザイン山</h1>
+    <meta property="fb:app_id" content="" />
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:site" content="">
+
+    <link rel="stylesheet" href="build/css/style.css" />
+    <link rel="shortcut icon" href="build/images/favicon.ico" />
+    <link rel="canonical" href="http://designyama.com/" />
+
+    <!-- Google Analytics -->
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+      ga('create', '', 'auto');
+      ga('require', 'displayfeatures');
+      ga('send', 'pageview');
+    </script>
+    <!-- END Google Analytics -->
+
+  </head>
+  <body class="page-index">
+
+    <div class="page">
+      <div class="canvas" id="canvas"></div>
+      <div class="overlay">
+        <div class="contents">
+          <header class="header js-adjust-window">
+            <div class="header__content">
+              <img src="build/images/yama-logo@2x.png" alt="デザイン山">
+              <p>
+                ペパボ + はてな
+              </p>
+              <h1>
+                デザイン山
+              </h1>
+              <p>
+                DESIGN YAMA vol.1
+              </p>
+              <p>
+                2015.12.10 Thu @GMO Yours
+              </p>
+            </div>
+          </header>
+          <section class="section">
+            <h2 class="section__heading">
+              デザインの話をしよう。
+            </h2>
+            <div class="section__body">
+              <p>はじめまして、デザイン山です。デザインするということは、さまざまな選択肢の中からひとつを選ぶということだと思います。選ぶための方法論やフレームワーク、道具の使い方を語ることはあっても、どうして選んだのかという理由は、これまであまり話されてこなかったのではないでしょうか。デザイナーがそれぞれ大切にしていること、それをカッコいいと思うこころが知りたいです。そんな話が聞けたらいいなと思って、ペパボとはてなが、みんなでおしゃべりをするイベントを開催します。</p>
+              <p>デザイン山には、山岳ガイドがいます。ペパボとはてなのデザイナを中心に、ゲストガイドもお招きして、さまざまな角度から山を眺めます。山岳ガイドといっしょに、入れ替わり立ち替わり、みんなで「自己紹介」したり、「好きなもの」「バックグラウンド」「役に立たない」ような、デザインの話をしましょう。デザイン山は、みんなでつくるイベントです。</p>
+            </div>
+          </section>
+          <section class="section">
+            <div class="section__body">
+              <a class="button" href="http://connpass.com/event/23439/" target="_blank">
+                <b>入山する</b>
+              </a>
+            </div>
+          </section>
+
+          <section class="section">
+            <h2 class="section__heading">
+              イベント概要
+            </h2>
+            <div class="section__body">
+              <dl>
+                <dt>
+                  イベント名
+                </dt>
+                <dd>
+                  <b>デザイン山 第1山</b>
+                </dd>
+              </dl>
+              <dl>
+                <dt>
+                  日時
+                </dt>
+                <dd>
+                  <b>2015年12月10日 木曜日<br>19:30 - 22:00</b>（19:00受付開始）
+                </dd>
+              </dl>
+              <dl>
+                <dt>
+                  参加費
+                </dt>
+                <dd>
+                  <b>無料</b>
+                </dd>
+              </dl>
+              <dl>
+                <dt>
+                  定員
+                </dt>
+                <dd>
+                  <b>40名</b>
+                </dd>
+              </dl>
+              <dl>
+                <dt>
+                  会場
+                </dt>
+                <dd>
+                  <b>GMO Yours</b><br>
+                  東京都渋谷区桜丘町26-1<br>
+                  セルリアンタワー11F<br>
+                  <a href="https://goo.gl/maps/YKbUWX5LfXx" target="_blank">MAP</a>
+                </dd>
+              </dl>
+              <dl>
+                <dt>
+                  ハッシュタグ
+                </dt>
+                <dd>
+                  #designyama
+                </dd>
+              </dl>
+            </div>
+          </section>
+
+          <section class="section">
+            <h2 class="section__heading">
+              登山計画
+            </h2>
+            <div class="section__body">
+              <p>
+                デザイン山には、山岳ガイドがいます。（敬称略）<br>
+                ペパボとはてなのデザイナを中心に、ゲストガイドもお招きしてさまざまな角度から山を眺めます。
+              </p>
+              <ul>
+                <li>
+                  <b>種村司</b> [<a href="https://twitter.com/tkstnmr" target="_blank">@tkstnmr</a>] 株式会社はてな
+                </li>
+                <li>
+                  <b>岡田裕介</b> [<a href="https://twitter.com/demiflare168" target="_blank">@demiflare168</a>] GMOペパボ株式会社
+                </li>
+                <li>
+                  <b>鹿</b> [<a href="http://twitter.com/shikakun" target="_blank">@shikakun</a>] GMOペパボ株式会社
+                </li>
+                <li>
+                  <b>なおめめ</b> [<a href="https://twitter.com/naomeme" target="_blank">@naomeme</a>] GMOペパボ株式会社
+                </li>
+                <li>
+                  <b>もちゃぴ</b> [<a href="https://twitter.com/mochapi" target="_blank">@mochapi</a>] 株式会社はてな
+                </li>
+                <li>
+                  <b>ueday</b> [<a href="https://github.com/ueday" target="_blank">@ueday</a>] 株式会社はてな
+                </li>
+                <li>
+                  <b>河原香奈子</b> [<a href="http://twitter.com/kanakt" target="_blank">@kanakt</a>] Bracket, Inc
+                </li>
+                <li>
+                  <b>伊野亘輝</b> [<a href="https://twitter.com/memocamera" target="_blank">@memocamera</a>] ROLLCAKE Inc.
+                </li>
+              </ul>
+              <p>
+                当日のタイムスケジュールです。<br>
+                履き慣れた靴でお越しください。
+              </p>
+
+              <dl>
+                <dt>
+                  19:00
+                </dt>
+                <dd>
+                  <b>入山開始</b><br>
+                  セルリアンタワーB1Fで受付を開始します。
+                </dd>
+              </dl>
+              <dl>
+                <dt>
+                  19:30
+                </dt>
+                <dd>
+                  <b>登山開始</b><br>
+                  話しはじめます。同時に懇親しはじめます。
+                </dd>
+              </dl>
+              <dl>
+                <dt>
+                  20:30
+                </dt>
+                <dd>
+                  <b>八合目到着</b><br>
+                  休憩します。
+                </dd>
+              </dl>
+              <dl>
+                <dt>
+                  21:30
+                </dt>
+                <dd>
+                  <b>山頂到着</b><br>
+                  現地解散です。
+                </dd>
+              </dl>
+
+              <p>
+                当日は 19:00 よりセルリアンタワーB1F で受付を開始しますので、入館証をお受け取りいただき、11Fまでエレベーターでおあがりください。<br>
+                なお 19:30 以降に入山される場合は、岡田 [<a href="https://twitter.com/demiflare168">@demiflare168</a>]・鹿 [<a href="https://twitter.com/shikakun">@shikakun</a>] までご連絡いただければ対応いたします。
+              </p>
+            </div>
+          </section>
+
+          <section class="section">
+            <div class="section__body">
+              <a class="button" href="http://connpass.com/event/23439/" target="_blank">
+                <b>入山する</b>
+              </a>
+            </div>
+          </section>
+
+          <footer class="footer">
+            <ul class="footer--nav">
+              <li>
+                <a href="http://hatenacorp.jp/" target="_blank">
+                  <img src="build/images/hatena-logo@2x.png" alt="株式会社はてな">
+                </a>
+              </li>
+              <li>
+                <a href="http://pepabo.com/" target="_blank">
+                  <img src="build/images/pepabo-logo@2x.png" alt="GMOペパボ株式会社">
+                </a>
+              </li>
+            </ul>
+            <p>
+              Copyright 2015 &copy; DESIGN YAMA<br class="if-desktop-hide"><span class="if-desktop-hide">&nbsp;</span> All rights reserved.
+            </p>
+          </footer>
+        </div>
+      </div>
+    </div>
+
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script src="build/js/three.min.js"></script>
+    <script src="build/js/js/renderers/Projector.js"></script>
+    <script src="build/js/js/renderers/CanvasRenderer.js"></script>
+    <script src="build/js/obj/Bird.js"></script>
+    <script src="build/js/scripts.js"></script>
+
+    <!-- typesquare -->
+    <script type="text/javascript" src="//typesquare.com/accessor/script/typesquare.js?Y7Lga5KpPn8%3D" charset="utf-8"></script>
+
+    <!-- Facebook SDK -->
+    <div id="fb-root"></div>
+    <script>(function(d, s, id) {
+      var js, fjs = d.getElementsByTagName(s)[0];
+      if (d.getElementById(id)) return;
+      js = d.createElement(s); js.id = id;
+      js.src = "//connect.facebook.net/ja_JP/sdk.js#xfbml=1&version=v2.0";
+      fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));</script>
 
   </body>
 </html>
